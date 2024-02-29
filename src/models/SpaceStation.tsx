@@ -1,9 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 
-import type {Mesh } from 'three'
-
 import SpaceStationScene from "../assets/3d/nebula.glb";
-import { Ref, useRef } from "react";
+import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 
 interface SpaceStationProps {

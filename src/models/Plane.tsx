@@ -24,7 +24,10 @@ export default function Plane({isRotating, ...props}: PlaneProps) {
     }
   },[actions, isRotating])
   
+  
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     <mesh {...props} ref={meshRef}>
       <primitive object={scene} isRotating={isRotating} ></primitive>
     </mesh>
