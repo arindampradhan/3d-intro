@@ -184,3 +184,11 @@ body,
   box-shadow: 0.6vmin 0.6vmin #fff, 1vmin 1vmin #5975a0, 1vmin 1vmin #33578e,
     0.65vmin 1vmin #37527b, 1vmin 0.65vmin #1f4f97;
 }
+
+a.neo-brutalism-white.neo-btn:hover {
+  background: #f4edff;
+}
+
+a.neo-brutalism-white.neo-btn:active, a.neo-brutalism-white.neo-btn:focus {
+  transform: translate(0, 2px);
+}

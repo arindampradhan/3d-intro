@@ -9,7 +9,7 @@ import HomeInfo from "../components/HomeInfo";
 
 export default function Home() {
   const [isRotating, setIsRotating] = useState(false);
-  const [currentStage , setCurrentStage] = useState<number | null>(0);
+  const [currentStage , setCurrentStage] = useState<number | null>();
   
   const adjustCafeForScreenSize = () => {
     let screenScale = null;

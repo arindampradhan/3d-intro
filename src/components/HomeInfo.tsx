@@ -25,7 +25,7 @@ const HomeInfo = ({ currentStage }: HomeInfoProps) => {
           I'm passionate about building software and solving problems
         </p>
 
-        <Link to='/about' className='neo-brutalism-white neo-btn'>
+        <Link to='https://medium.com/crazyhacker/about-me-3920d163a262' className='neo-brutalism-white neo-btn'>
           Learn more
           <Arrow />
         </Link>
@@ -55,7 +55,7 @@ const HomeInfo = ({ currentStage }: HomeInfoProps) => {
         Need a project done or looking for a dev? <br/> I'm just a few keystrokes away
       </p>
 
-      <Link to='/contact' className='neo-brutalism-white neo-btn'>
+      <Link to='mailto:arindampradhan@10.com' className='neo-brutalism-white neo-btn'>
         Let's talk
         <Arrow />
       </Link>
