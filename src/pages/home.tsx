@@ -1,15 +1,18 @@
 import Loader from "../components/Loader";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Cafe from "../models/Cafe";
 import Sky from "../models/SpaceStation";
 import Bird from "../models/Bird";
 import Plane from "../models/Plane";
 import HomeInfo from "../components/HomeInfo";
+import useSound from 'use-sound';
+import cowboySfx from '../assets/cowboy.mp3'
 
 export default function Home() {
   const [isRotating, setIsRotating] = useState(false);
   const [currentStage , setCurrentStage] = useState<number | null>();
+  const [play, {pause}] = useSound(cowboySfx, {volume: 0.35});
   
   const adjustCafeForScreenSize = () => {
     let screenScale = null;
@@ -40,6 +43,15 @@ export default function Home() {
   const [CafeScale, CafePosition, CafeRotation] =
     adjustCafeForScreenSize();
   const [planeScale, planePosition] = adjustPlaneForScreenSize();
+
+  useEffect(() => {
+    if(isRotating) {
+      play()
+    } else {
+
+      pause()
+    }
+  }, [isRotating, play,pause])
 
   return (
     <main className="w-full h-screen relative">
