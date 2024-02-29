@@ -1,21 +1,21 @@
-import { Html, useAnimations, useGLTF } from "@react-three/drei";
+import { useAnimations, useGLTF } from "@react-three/drei";
 
 import { useEffect, useRef } from "react";
-import type { Group, AnimationAction, Object3DEventMap } from "three";
+import type { Group, Object3DEventMap } from "three";
 
 import birdScene from "../assets/3d/flying_synthwave_bird.glb";
 import { useFrame } from "@react-three/fiber";
 
 export default function Bird() {
-  const { scene, animations } = useGLTF(birdScene);
-  const birdRef = useRef<Group<Object3DEventMap>>(null);
-  const { actions }: { actions: AnimationAction } = useAnimations(
+  const { scene, animations } = useGLTF(birdScene) as any;
+  const birdRef: any = useRef<Group<Object3DEventMap>>(null);
+  const { actions } = useAnimations(
     animations,
     birdRef
   );
 
   useEffect(() => {
-    actions?.["Armature|Scene|Scene"]?.play();
+    (actions)?.["Armature|Scene|Scene"]?.play();
     // debugger
   }, []);
 

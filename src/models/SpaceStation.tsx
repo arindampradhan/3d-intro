@@ -12,7 +12,7 @@ interface SpaceStationProps {
 
 export default function Sky({ isRotating }: SpaceStationProps) {
   const spaceStation = useGLTF(SpaceStationScene);
-  const spaceStationRef: Ref<Mesh> = useRef();
+  const spaceStationRef: any = useRef();
 
   useFrame((_,delta) => {
     if(isRotating && spaceStationRef?.current?.rotation) {
@@ -24,7 +24,7 @@ export default function Sky({ isRotating }: SpaceStationProps) {
     <mesh ref={spaceStationRef}>
       {/* make it a bit back */}
       <group scale={0.9} position={[0,10,0]}>
-      <primitive object={spaceStation.scene}></primitive>
+      <primitive object={(spaceStation as any).scene}></primitive>
       </group>
     </mesh>
   );

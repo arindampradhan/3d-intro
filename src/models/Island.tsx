@@ -8,7 +8,7 @@ Source: https://sketchfab.com/3d-models/foxs-islands-163b68e09fcc47618450150be77
 Title: Fox's islands
 */
 
-import React, { MutableRefObject, Ref, useEffect, useRef } from "react";
+import {  useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { a } from "@react-spring/three";
@@ -33,33 +33,33 @@ function Island(props: IslandProps) {
   const rotationSpeedRef = useRef(0);
   const dampingFactor = 0.95;
   const { gl, viewport } = useThree();
-  const { nodes, materials } = useGLTF(islandScene);
+  const { nodes, materials }: any = useGLTF(islandScene);
 
-  const handlePointerDown = (event: TouchEvent) => {
+  const handlePointerDown = (event: TouchEvent | PointerEvent) => {
     event.stopPropagation();
     event.preventDefault();
     setIsRotating(true);
 
     // Calculate the clientX based on whether it's a touch event or a mouse event
-    const clientX = event.touches ? event.touches[0].clientX : (event as any).clientX;
+    const clientX = (event as TouchEvent).touches ? (event as TouchEvent).touches[0].clientX : (event as PointerEvent).clientX;
 
     // Store the current clientX position for reference
     lastXRef.current = clientX;
   };
 
-  const handlePointerUp = (e: TouchEvent) => {
+  const handlePointerUp = (e: TouchEvent | PointerEvent) => {
     e.stopPropagation();
     e.preventDefault();
     setIsRotating(false);
   };
 
-  const handlePointerMove = (event: TouchEvent) => {
+  const handlePointerMove = (event: TouchEvent | PointerEvent) => {
     event.stopPropagation();
     event.preventDefault();
     if (isRotating && islandRef.current) {
       // If rotation is enabled, calculate the change in clientX position
-      const clientX = event.touches
-        ? event.touches[0].clientX
+      const clientX = (event as TouchEvent).touches
+        ? (event as TouchEvent).touches[0].clientX
         : (event as any).clientX;
 
       // calculate the change in the horizontal position of the mouse cursor or touch input,

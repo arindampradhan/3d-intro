@@ -1,9 +1,7 @@
-import { Html, useGLTF } from "@react-three/drei";
-
-import type {Mesh } from 'three'
+import {  useGLTF } from "@react-three/drei";
 
 import cloudScene from "../assets/3d/cloud_station.glb";
-import { Ref, useRef } from "react";
+import {  useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 
 interface CloudProps {
@@ -11,8 +9,8 @@ interface CloudProps {
 }
 
 export default function Sky({ isRotating }: CloudProps) {
-  const cloud = useGLTF(cloudScene);
-  const cloudRef: Ref<Mesh> = useRef();
+  const cloud: any = useGLTF(cloudScene);
+  const cloudRef: any = useRef();
 
   useFrame((_,delta) => {
     if(isRotating && cloudRef?.current?.rotation) {

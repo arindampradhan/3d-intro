@@ -1,9 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 
-import type {Mesh } from 'three'
-
 import skyScene from "../assets/3d/sky.glb";
-import { Ref, useRef } from "react";
+import {  useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 
 interface SkyProps {
@@ -12,8 +10,8 @@ interface SkyProps {
 }
 
 export default function Sky({ isRotating }: SkyProps) {
-  const sky = useGLTF(skyScene);
-  const skyRef: Ref<Mesh> = useRef();
+  const sky: any = useGLTF(skyScene);
+  const skyRef: any = useRef();
 
   useFrame((_,delta) => {
     if(isRotating && skyRef?.current?.rotation) {

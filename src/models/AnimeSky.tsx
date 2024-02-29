@@ -1,9 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 
-import type {Mesh } from 'three'
-
 import skyScene from "../assets/3d/anime_sky.glb";
-import { Ref, useRef } from "react";
+import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 
 interface SkyProps {
@@ -13,7 +11,7 @@ interface SkyProps {
 
 export default function AnimeSky({ isRotating }: SkyProps) {
   const sky = useGLTF(skyScene);
-  const skyRef: Ref<Mesh> = useRef();
+  const skyRef: any = useRef();
 
   useFrame((_,delta) => {
     if(isRotating && skyRef?.current?.rotation) {
@@ -23,7 +21,7 @@ export default function AnimeSky({ isRotating }: SkyProps) {
 
   return (
     <mesh ref={skyRef}>
-      <primitive object={sky.scene}></primitive>
+      <primitive object={(sky as any).scene}></primitive>
     </mesh>
   );
 }
