@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { IoArrowRedoSharp as Arrow } from "react-icons/io5";
 import { motion } from "framer-motion";
 
-const Animation: React.FC = ({ children, ...rest }) => {
+const Animation: any = ({ children, ...rest }: React.PropsWithChildren<unknown>) => {
   return (
     <motion.div
       initial={{ scale: 0, rotate: -180 }}
@@ -23,18 +23,19 @@ const Animation: React.FC = ({ children, ...rest }) => {
 // Props interface for Home Info
 interface HomeInfoProps {
   currentStage: number;
+  key: string;
 }
 
 const HomeInfo = ({ currentStage, key }: HomeInfoProps) => {
   if (currentStage === 1)
     return (
       <Animation key={key}>
-      <h1 className="sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5">
-        Hi, I'm
-        <span className="font-semibold mx-2 text-white">Arindam Pradhan</span>
-        👋
-        <br />A Software Engineer from India 🇮🇳
-      </h1>
+        <h1 className="sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5">
+          Hi, I'm
+          <span className="font-semibold mx-2 text-white">Arindam Pradhan</span>
+          👋
+          <br />A Software Engineer from India 🇮🇳
+        </h1>
       </Animation>
     );
 
