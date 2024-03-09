@@ -8,6 +8,8 @@ import Plane from "../models/Plane";
 import HomeInfo from "../components/HomeInfo";
 import useSound from 'use-sound';
 import cowboySfx from '../assets/cowboy.mp3'
+import { timeout } from "../utils";
+import { AnimatePresence } from "framer-motion"
 
 export default function Home() {
   const [isRotating, setIsRotating] = useState(false);
@@ -44,19 +46,24 @@ export default function Home() {
     adjustCafeForScreenSize();
   const [planeScale, planePosition] = adjustPlaneForScreenSize();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if(isRotating) {
       play()
     } else {
-
-      pause()
+      (async () => {
+        await timeout(500)
+        pause()
+      })()
     }
-  }, [isRotating, play,pause])
+  }, [isRotating, play, pause])
 
   return (
     <main className="w-full h-screen relative">
       <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
-        {!!currentStage && <HomeInfo currentStage={currentStage} />}
+        <AnimatePresence>
+        {!!currentStage && <HomeInfo key="modal" currentStage={currentStage} />}
+        </AnimatePresence>
       </div>
       <Canvas
         className="w-full h-screen bg-transparent"

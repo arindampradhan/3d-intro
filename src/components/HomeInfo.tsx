@@ -1,65 +1,96 @@
 import { Link } from "react-router-dom";
 import { IoArrowRedoSharp as Arrow } from "react-icons/io5";
+import { motion } from "framer-motion";
+
+const Animation: React.FC = ({ children, ...rest }) => {
+  return (
+    <motion.div
+      initial={{ scale: 0, rotate: -180 }}
+      animate={{ rotate: 0, scale: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+      }}
+      exit={{ opacity: 0, scale: 0 }}
+      {...rest}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 // Props interface for Home Info
 interface HomeInfoProps {
   currentStage: number;
 }
 
-const HomeInfo = ({ currentStage }: HomeInfoProps) => {
+const HomeInfo = ({ currentStage, key }: HomeInfoProps) => {
   if (currentStage === 1)
     return (
-      <h1 className='sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5'>
+      <Animation key={key}>
+      <h1 className="sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5">
         Hi, I'm
-        <span className='font-semibold mx-2 text-white'>Arindam Pradhan</span>
+        <span className="font-semibold mx-2 text-white">Arindam Pradhan</span>
         👋
-        <br />
-        A Software Engineer from India 🇮🇳
+        <br />A Software Engineer from India 🇮🇳
       </h1>
+      </Animation>
     );
 
   if (currentStage === 2) {
     return (
-      <div className='info-box'>
-        <p className='font-medium sm:text-xl text-center'>
+      <Animation key={key} className="info-box">
+        <p className="font-medium sm:text-xl text-center">
           I'm passionate about building software and solving problems
         </p>
 
-        <Link to='https://medium.com/crazyhacker/about-me-3920d163a262' className='neo-brutalism-white neo-btn'>
+        <Link
+          to="https://medium.com/crazyhacker/about-me-3920d163a262"
+          className="neo-brutalism-white neo-btn"
+        >
           Learn more
           <Arrow />
         </Link>
-      </div>
+      </Animation>
     );
   }
 
   if (currentStage === 3) {
     return (
-      <div className='info-box'>
-        <p className='font-medium text-center sm:text-xl'>
-          Led multiple projects to success over the years. <br /> Curious about the impact?
+      <Animation key={key} className="info-box">
+        <p className="font-medium text-center sm:text-xl">
+          Led multiple projects to success over the years. <br /> Curious about
+          the impact?
         </p>
 
-        <Link to='https://github.com/arindampradhan/Resume/blob/master/PDF/ArindamPradhan.pdf' className='neo-brutalism-white neo-btn'>
+        <Link
+          to="https://github.com/arindampradhan/Resume/blob/master/PDF/ArindamPradhan.pdf"
+          className="neo-brutalism-white neo-btn"
+        >
           Visit my portfolio
           <Arrow />
         </Link>
-      </div>
+      </Animation>
     );
   }
 
   if (currentStage === 4) {
     return (
-      <div className='info-box'>
-      <p className='font-medium sm:text-xl text-center'>
-        Need a project done or looking for a dev? <br/> I'm just a few keystrokes away
-      </p>
+      <Animation key={key} className="info-box">
+        <p className="font-medium sm:text-xl text-center">
+          Need a project done or looking for a dev? <br /> I'm just a few
+          keystrokes away
+        </p>
 
-      <Link to='mailto:arindampradhan@10.com' className='neo-brutalism-white neo-btn'>
-        Let's talk
-        <Arrow />
-      </Link>
-    </div>
+        <Link
+          to="mailto:arindampradhan@10.com"
+          className="neo-brutalism-white neo-btn"
+        >
+          Let's talk
+          <Arrow />
+        </Link>
+      </Animation>
     );
   }
 

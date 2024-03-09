@@ -166,7 +166,9 @@ function Island(props: CafeProps) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     <a.group  ref={islandRef}  {...props}>
-      <group scale={2.7}>
+      <group scale={2.7}
+      rotation={[0, -2.9,0 ]}
+      >
         <mesh
           castShadow
           receiveShadow
