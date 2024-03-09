@@ -47,6 +47,7 @@ const HomeInfo = ({ currentStage, key }: HomeInfoProps) => {
         </p>
 
         <Link
+          target="_blank"
           to="https://medium.com/crazyhacker/about-me-3920d163a262"
           className="neo-brutalism-white neo-btn"
         >
@@ -66,6 +67,7 @@ const HomeInfo = ({ currentStage, key }: HomeInfoProps) => {
         </p>
 
         <Link
+          target="_blank"
           to="https://github.com/arindampradhan/Resume/blob/master/PDF/ArindamPradhan.pdf"
           className="neo-brutalism-white neo-btn"
         >
@@ -85,6 +87,7 @@ const HomeInfo = ({ currentStage, key }: HomeInfoProps) => {
         </p>
 
         <Link
+          target="_blank"
           to="mailto:arindampradhan@10.com"
           className="neo-brutalism-white neo-btn"
         >
